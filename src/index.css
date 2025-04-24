@@ -1,0 +1,290 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+@plugin "daisyui";
+
+:root {
+  --primary-bg: #1e1e1e;
+  --secondary-bg: #595959;
+  --tertiary-bg: #7F7F7F;
+  --text-primary: #F2F2F2;
+  --text-secondary: #CCCCCC;
+  --text-tertiary: #A5A5A5;
+  --accent: #7F7F7F;
+  --scrollbar-thumb: #7F7F7F;
+  --scrollbar-track: #2d2d2d;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background-color: var(--primary-bg);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.file-upload-button::-webkit-file-upload-button {
+  display: none;
+}
+
+.file-upload-button::file-selector-button {
+  display: none;
+}
+
+/* Main content area scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  border-radius: 10px;
+  border: 2px solid var(--scrollbar-track);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #A5A5A5;
+}
+
+/* Textarea specific scrollbar - more subtle */
+textarea.custom-scrollbar::-webkit-scrollbar,
+.textarea-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+textarea.custom-scrollbar::-webkit-scrollbar-track,
+.textarea-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 1px;
+}
+
+textarea.custom-scrollbar::-webkit-scrollbar-thumb,
+.textarea-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--tertiary-bg);
+  border-radius: 10px;
+  border: none;
+}
+
+textarea.custom-scrollbar::-webkit-scrollbar-thumb:hover,
+.textarea-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: var(--text-tertiary);
+}
+
+/* Input area scrollbar - bigger and with more padding */
+.input-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.input-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 4px;
+  border-radius: 10px;
+}
+
+.input-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--tertiary-bg);
+  border-radius: 10px;
+  border: none;
+}
+
+.input-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: var(--text-secondary);
+}
+
+/* Hide scrollbar for textarea while keeping functionality */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* Animation for the typing indicator */
+@keyframes blink {
+  0% { opacity: .2; }
+  20% { opacity: 1; }
+  100% { opacity: .2; }
+}
+
+.typing-dot {
+  animation: blink 1.4s infinite both;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: .2s;
+}
+
+.typing-dot:nth-child(3) {
+  animation-delay: .4s;
+}
+
+/* Apply rounded styling to all components */
+textarea, button, input, div {
+  transition: all 0.2s ease;
+}
+
+/* File preview hover effect */
+.file-preview:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Floating textarea styling */
+.floating-textarea {
+  background-color: var(--secondary-bg);
+  border: 1px solid var(--tertiary-bg);
+  border-radius: 24px;
+}
+
+/* Make sure the textarea is properly rounded */
+textarea {
+  border-radius: 24px !important;
+}
+
+/* Remove white border/outline when typing */
+.no-focus-outline:focus,
+.no-focus-outline:focus-visible,
+textarea:focus, 
+textarea:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: var(--tertiary-bg) !important;
+  box-shadow: 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color), var(--tw-ring-shadow)!important;
+  box-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color) !important;
+}
+
+/* Horizontal file list styling */
+.flex-nowrap {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Files display in bubble-like appearance */
+.file-preview {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Override to ensure chat area is scrollable */
+.chat-scroll-container {
+  overflow-y: auto !important;
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Default navbar styling for all screen sizes */
+.navbar {
+  background-color: var(--primary-bg);
+  box-shadow: none;
+  border-bottom: 1px solid var(--border, #2D2D2D);
+}
+
+/* Custom navbar styling for message pass-through */
+@media (min-width: 1344px) {
+  .navbar {
+    background: transparent;
+    box-shadow: none;
+    border-bottom: none;
+  }
+  
+  .navbar::before,
+  .navbar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 15%;
+    height: 100%;
+    background-color: var(--primary-bg);
+    z-index: -1;
+    box-shadow: none;
+    border-bottom: 1px solid var(--border, #2D2D2D);
+  }
+  
+  .navbar::before {
+    left: 0;
+  }
+  
+  .navbar::after {
+    right: 0;
+  }
+}
+
+/* Tablet-specific styling for responsive behavior */
+@media (min-width: 768px) and (max-width: 1343px) {
+  .navbar {
+    background-color: var(--primary-bg);
+    box-shadow: none;
+    border-bottom: 1px solid var(--border, #2D2D2D);
+  }
+  
+  .md-content-padding {
+    padding-top: 3.5rem;
+  }
+}
+
+/* Center scrollbar for chat container */
+.chat-scroll-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-scroll-container::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 0 auto;
+}
+
+.chat-scroll-container::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  border-radius: 10px;
+  margin: 0 auto;
+}
+
+/* Custom scrollbar for the chat area */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+}
+
+/* Hide scrollbars in file list but allow scrolling */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* File attachment styles */
+.file-attachment {
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.file-attachment:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-color: #5A5A5A;
+}
+
