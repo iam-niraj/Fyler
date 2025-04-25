@@ -205,13 +205,9 @@ export const processFile = async (
     } catch (error) {
       console.error('Decryption failed, returning response as-is:', error);
       // Determine content type based on operation as a fallback
-      let contentType;
       if (operation === OPERATIONS.COMPRESS) {
-        contentType = 'application/pdf';
       } else if (operation === OPERATIONS.MERGE) {
-        contentType = 'application/pdf';
       } else {
-        contentType = response.headers.get('X-Original-Content-Type') || 'application/octet-stream';
       }
       
       return encryptedResponseBlob;
