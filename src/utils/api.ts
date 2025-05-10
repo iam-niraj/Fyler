@@ -204,12 +204,7 @@ export const processFile = async (
       }
     } catch (error) {
       console.error('Decryption failed, returning response as-is:', error);
-      // Determine content type based on operation as a fallback
-      if (operation === OPERATIONS.COMPRESS) {
-      } else if (operation === OPERATIONS.MERGE) {
-      } else {
-      }
-      
+      // Return the encrypted blob directly
       return encryptedResponseBlob;
     }
   } catch (error) {
