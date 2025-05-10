@@ -73,3 +73,27 @@ The interface adapts to different screen sizes while maintaining usability and v
 ## License
 
 MIT
+
+# File-Assist Backend
+
+A Flask application for file operations including PDF compression, splitting, merging, and image compression.
+
+## Deploy to Render (Free)
+
+1. Create a Render account at https://render.com
+2. Click "New +" and select "Web Service"
+3. Connect your GitHub repository
+4. Use these settings:
+   - Name: file-assist-backend (or your preferred name)
+   - Environment: Python
+   - Build Command: `pip install -r requirements.txt`
+   - Start Command: `gunicorn backend.FYP.app:app`
+   - Plan: Free
+
+Your application will be deployed at a URL like `https://file-assist-backend.onrender.com`
+
+## Local Development
+
+1. Install dependencies: `pip install -r requirements.txt`
+2. Run the application: `python backend/FYP/app.py`
+3. The server will start at `http://localhost:5000`
