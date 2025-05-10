@@ -3,7 +3,7 @@
  */
 
 // API endpoint
-export const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+export const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://backend-fyler.onrender.com';
 
 // CORS proxy configuration
 export const USE_CORS_PROXY = import.meta.env.VITE_USE_CORS_PROXY === 'true';
